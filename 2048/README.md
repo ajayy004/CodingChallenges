@@ -1,3 +1,3 @@
 # 2048
 
-You can find Demo [here](/2048/build/).
+You can find working Demo [here](https://ajayy004.github.io/CodingChallenges/2048/build/).
