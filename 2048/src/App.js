@@ -42,7 +42,7 @@ class App extends Component {
             </div>
             <button className="pull-right" onClick={e => this.restartGame(size)}>Restart</button>
           </div>
-          <p>Use 1, 2, 3, 4 key to move left,right,up and down</p>
+          <p>Use left, right, up, down arrow key to move left,right,up and down</p>
         </div>
         <div className="game" style={{width: 90*size}}>
           {isGameOver ? <GameOver score={score}/> : null}
@@ -158,8 +158,8 @@ class App extends Component {
 
   checkKey = e => {
     e = e || window.event;
-    if (e.keyCode >= 49 && e.keyCode <= 52) {
-      this.makeAMove(e.keyCode - 49);
+    if (e.keyCode >= 37 && e.keyCode <= 40) {
+      this.makeAMove(e.keyCode - 37);
     }
   };
 
@@ -186,7 +186,7 @@ class App extends Component {
   };
 
   makeAMove = direction => {
-    // 0 > left, 1 > right , 2 > up, 3 > down
+    // 0 > left, 1 > up , 2 > right , 3 > down
     const { grid, size } = this.state;
     let newGrid = this.copyGrid(grid);
     let isFliped = false;
@@ -200,13 +200,14 @@ class App extends Component {
           break;
         case 1:
           // console.log("righ move");
-          break;
-        case 2:
-          // console.log("up move");
           newGrid = this.rotateGrid(newGrid);
           newGrid = this.flipGrid(newGrid);
           isRotated = true;
           isFliped = true;
+          break;
+        case 2:
+          // console.log("up move");
+          
           break;
         default:
           // 3
